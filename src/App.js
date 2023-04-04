@@ -19,21 +19,29 @@ function App() {
 
 
   const [formData, setFormData] = useState({firstName : "", 
-  lastName : "", email:"" , comments:""});
-  console.log(formData);
+  lastName : "", email:"" , comments:"" , isVisible:true , mode:"" , favCar:""});
+  // console.log(formData);
+
   function changeHandler(event) {
+    const {name, value, checked, type} = event.target
     setFormData(prevFormData => {
       return {
       ...prevFormData,
-        [event.target.name]: event.target.value
+        [name]: type==="checkbox" ? checked : value
       }
     });
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+    console.log("Printing the data After Submitting");
+    console.log(formData);
   }
   
 
   return (
     <div className="App">
-      <form action="">
+      <form action="" onSubmit={submitHandler}>
         <br />
         <input type="text" placeholder="First Name" onChange={changeHandler} name="firstName" value={formData.firstName} />
 
@@ -48,7 +56,66 @@ function App() {
         
         <br/><br/><br/>
 
-          <textarea name="comments" placeholder="Enter your Comments here" onChange={changeHandler} value={formData.comments}/>
+        <textarea name="comments" placeholder="Enter your Comments here" onChange={changeHandler} value={formData.comments}/> 
+
+        <br/><br/><br/>
+
+        <input
+          name="isVisible"
+          type="checkbox"
+          onChange={changeHandler}
+          id="isVisible"
+          checked={formData.isVisible}
+        />
+        <label htmlFor="isVisible">Am i Visible?</label>
+
+        <br/><br/><br/>
+        <fieldset>
+          <legend>Mode:</legend>
+          < input 
+            type="radio"
+            onChange={changeHandler}
+            name="mode"
+            value="Online-Mode"
+            id="Online-Mode"
+            checked={formData.mode === "Online-Mode"}
+          />
+         <label htmlFor='Online-Mode'>
+          Online Mode
+         </label>
+
+          < input 
+            type="radio"
+            onChange={changeHandler}
+            name="mode"
+            value="Offline-Mode"
+            id="Offline-Mode"
+            checked={formData.mode === "Offline-Mode"}
+          />
+          <label htmlFor="Offline-Mode">Offline Mode</label>
+        </fieldset>
+
+          <select 
+            name="favCar"
+            id="favCar"
+            value={formData.favCar}
+            onChange={changeHandler}
+          >
+            <label htmlFor="favCar">Tell me your Favorite Car</label>
+            <option value="Select">Select</option>
+            <option value="Mercedes GLS Maybach 600">Mercedes GLS Maybach 600</option>
+            <option value="Lamborghini">Lamborghini</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Defender">Defender</option>
+            <option value="Scorpio">Scorpio</option>
+          </select>  
+          
+           <br/><br/>
+
+
+          <input type="Submit" >
+            
+          </input>
       </form>
     </div>
   );
