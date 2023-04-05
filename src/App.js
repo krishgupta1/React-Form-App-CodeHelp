@@ -43,20 +43,43 @@ function App() {
     <div className="App">
       <form action="" onSubmit={submitHandler}>
         <br />
-        <input type="text" placeholder="First Name" onChange={changeHandler} name="firstName" value={formData.firstName} />
+        <input 
+          type="text" 
+          placeholder="First Name" 
+          onChange={changeHandler} 
+          name="firstName" 
+          value={formData.firstName} 
+        />
 
         <br/><br/><br/>
 
-        <input type="text" placeholder="Last Name" onChange={changeHandler} name="lastName" value={formData
-        .lastName}/>
+        <input 
+          type="text" 
+          placeholder="Last Name" 
+          onChange={changeHandler} 
+          name="lastName" 
+          value={formData
+          .lastName}
+        />
         
         <br/><br/><br/>
         
-        <input type="email" placeholder="Enter your Email here " onChange={changeHandler} name="email" value={formData.email}/>
+        <input 
+          type="email" 
+          placeholder="Enter your Email here " 
+          onChange={changeHandler} 
+          name="email" 
+          value={formData.email}
+        />
         
         <br/><br/><br/>
 
-        <textarea name="comments" placeholder="Enter your Comments here" onChange={changeHandler} value={formData.comments}/> 
+        <textarea 
+          name="comments" 
+          placeholder="Enter your Comments here" 
+          onChange={changeHandler} 
+          value={formData.comments}
+        /> 
 
         <br/><br/><br/>
 
@@ -72,7 +95,7 @@ function App() {
         <br/><br/><br/>
         <fieldset>
           <legend>Mode:</legend>
-          < input 
+          <input 
             type="radio"
             onChange={changeHandler}
             name="mode"
@@ -84,7 +107,7 @@ function App() {
           Online Mode
          </label>
 
-          < input 
+          <input 
             type="radio"
             onChange={changeHandler}
             name="mode"
@@ -101,7 +124,9 @@ function App() {
             value={formData.favCar}
             onChange={changeHandler}
           >
-            <label htmlFor="favCar">Tell me your Favorite Car</label>
+            <label htmlFor="favCar">
+              Tell me your Favorite Car
+            </label>
             <option value="Select">Select</option>
             <option value="Mercedes GLS Maybach 600">Mercedes GLS Maybach 600</option>
             <option value="Lamborghini">Lamborghini</option>
